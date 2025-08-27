@@ -1,0 +1,440 @@
+body {
+  background-color: #f4f6f9;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.section-card {
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.2s;
+}
+
+.section-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.action-button,
+.month-button,
+.dept-button {
+  background-color: #60a5fa;
+  color: #ffffff;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s, transform 0.1s;
+  min-width: 80px;
+  margin: 0.2rem;
+}
+
+.action-button:hover,
+.month-button:hover,
+.dept-button:hover {
+  background-color: #3b82f6;
+  transform: translateY(-1px);
+}
+
+.month-button,
+.dept-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cancel-button {
+  background-color: #b91c1c;
+  color: #ffffff;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s, transform 0.1s;
+  min-width: 80px;
+}
+
+.cancel-button:hover {
+  background-color: #991b1b;
+  transform: translateY(-1px);
+}
+
+.employee-card {
+  cursor: pointer;
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border: 1px solid #e5e7ee;
+  border-radius: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+  margin: 8px;
+  max-width: max-content;
+}
+
+.employee-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.employee-card.selected {
+  background-color: #e0f2fe;
+  border-color: #3b82f6;
+  border: 2px solid #3b82f6;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 1050;
+}
+
+.modal-content {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.month-table {
+  display: none;
+}
+
+.month-table.active {
+  display: block;
+}
+
+.time-input {
+  width: 100px;
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  border-radius: 0.375rem;
+}
+
+.work-type {
+  width: 120px;
+  font-size: 0.85rem;
+  border-radius: 0.375rem;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Specific styling for department summary and employee list tables */
+table.summary-table {
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.monthly-salary-table .scroll-table-x {
+  overflow-x: auto;
+  width: 100%;
+  max-width: 100%;
+  padding-bottom: 1rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.monthly-salary-table .scroll-table-x::-webkit-scrollbar {
+  height: 8px;
+}
+
+.monthly-salary-table .scroll-table-x::-webkit-scrollbar-thumb {
+  background-color: #60a5fa;
+  border-radius: 4px;
+}
+
+.monthly-salary-table .scroll-table-x::-webkit-scrollbar-track {
+  background-color: #e5e7eb;
+  border-radius: 4px;
+}
+
+.department-summary .scroll-container,
+.department-employee-table .scroll-container {
+  overflow-x: auto;
+  width: 100%;
+  max-width: 100%;
+  padding-bottom: 1rem;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: #60a5fa #e5e7eb;
+}
+
+.department-summary .scroll-container::-webkit-scrollbar,
+.department-employee-table .scroll-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.department-summary .scroll-container::-webkit-scrollbar-thumb,
+.department-employee-table .scroll-container::-webkit-scrollbar-thumb {
+  background-color: #60a5fa;
+  border-radius: 4px;
+}
+
+.department-summary .scroll-container::-webkit-scrollbar-track,
+.department-employee-table .scroll-container::-webkit-scrollbar-track {
+  background-color: #e5e7eb;
+  border-radius: 4px;
+}
+
+table.summary-table th,
+table.summary-table td {
+  border: 1px solid #e5e7eb;
+  padding: 0.75rem;
+  text-align: left;
+  vertical-align: middle;
+  color: #1f2937;
+  min-width: 120px;
+}
+
+table.summary-table th {
+  background-color: #60a5fa;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+table.summary-table td {
+  background-color: #ffffff;
+}
+
+table.summary-table tr:nth-child(even) td {
+  background-color: #f9fafb;
+}
+
+table.summary-table tr:hover td {
+  background-color: #eff6ff;
+}
+
+/* Specific styling for monthly attendance tables */
+.month-table .scroll-table-x {
+  overflow-x: auto;
+  overflow-y: auto;
+  max-height: 500px; /* Set a max height for vertical scrolling */
+  width: 100%;
+  max-width: 100%;
+  padding-bottom: 1rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.month-table .scroll-table-x::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+
+.month-table .scroll-table-x::-webkit-scrollbar-thumb {
+  background-color: #60a5fa;
+  border-radius: 4px;
+}
+
+.month-table .scroll-table-x::-webkit-scrollbar-track {
+  background-color: #e5e7eb;
+  border-radius: 4px;
+}
+
+.month-table table {
+  width: max-content;
+  min-width: 900px;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.month-table th,
+.month-table td {
+  border: 1px solid #e5e7eb;
+  padding: 0.75rem;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  color: #1f2937;
+}
+
+.month-table thead tr {
+  position: sticky;
+  top: 0;
+  background-color: #60a5fa;
+  z-index: 12;
+  border-bottom: 2px solid #4b5e97;
+}
+
+.month-table th {
+  background-color: #60a5fa;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.month-table td {
+  background-color: #ffffff;
+}
+
+.month-table tr:nth-child(even) td {
+  background-color: #f9fafb;
+}
+
+.month-table tr:hover td {
+  background-color: #eff6ff;
+}
+
+td.holiday {
+  background-color: #fef2f2;
+  color: #b91c1c;
+  font-weight: 500;
+}
+
+.department-section {
+  margin-bottom: 2.5rem;
+}
+
+.form-control,
+.form-select {
+  border-radius: 0.75rem;
+  font-size: 0.9rem;
+  padding: 0.75rem;
+  border: 1px solid #ced4da;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-control::placeholder {
+  color: #6b7280;
+  opacity: 1;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: #1f2937;
+}
+
+#monthTables {
+  overflow-x: auto;
+  max-width: 100%;
+  position: relative;
+}
+
+.mb-3 {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.edit-button,
+.save-button,
+.cancel-button {
+  width: auto;
+  min-width: 80px;
+  margin: 0;
+}
+
+#monthButtons,
+[id^='deptButtons-'] {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.month-table th:first-child,
+.month-table td:first-child {
+  position: sticky;
+  left: 0;
+  background-color: #f0f4f8;
+  z-index: 10;
+  border-right: 2px solid #4b5e97;
+  color: #1f2937;
+}
+
+.month-table th:first-child {
+  background-color: #60a5fa;
+  color: #ffffff;
+  z-index: 13; /* Higher z-index for the top-left corner */
+}
+
+.form-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23333' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 12px;
+  padding-right: 2rem;
+  border-radius: 0.75rem;
+  background-color: #ffffff;
+  border: 1px solid #a1b4cc;
+  color: #1f2937;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+.form-select:hover {
+  border-color: #2563eb;
+}
+
+.form-select:disabled,
+.form-control:disabled {
+  background-color: #f9fafb;
+}
+
+.time-input {
+  width: fit-content;
+}
+
+/* Replace the existing .work-type and .time-input styles with these to add margin for CUSTOM_HOURS input */
+.work-type {
+  width: 120px;
+  font-size: 0.85rem;
+  /* border-radius: 0.375rem; */
+  margin-bottom: 0.5rem; /* Added margin to create gap between dropdown and input */
+}
+
+.time-input,
+.hours-input {
+  width: fit-content;
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  /* border-radius: 0.375rem; */
+}
+
+/* Add active state styles for month and department buttons */
+.month-button.active,
+.dept-button.active {
+  background-color: #2563eb; /* Darker blue to indicate active state */
+  color: #ffffff;
+}
+
+/* Ensure hover state doesn't override active state */
+.month-button.active:hover,
+.dept-button.active:hover {
+  background-color: #1d4ed8; /* Slightly darker on hover for active buttons */
+  transform: translateY(-1px);
+}
